@@ -16,7 +16,7 @@ app.use(async (c, next) => {
   const origin = c.req.header('origin');
   if (
     (origin && ALLOWED_ORIGINS.includes(origin)) ||
-    c.req.header('x-middleware-subrequest') === 'middleware'
+    c.req.header('user-agent') === 'Vercel Edge Functions'
   ) {
     await next();
   } else {
