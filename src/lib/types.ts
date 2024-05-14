@@ -1,5 +1,5 @@
 export type AnalyticsBody = {
-  pathname?: string;
+  pathname: string;
   os?: string;
   osVersion?: string;
   engine?: string;
@@ -13,17 +13,17 @@ export type AnalyticsBody = {
   city?: string;
   ip?: string;
   userId?: string;
-  isBot?: boolean;
+  bot?: boolean;
 };
 
-export type QueryParamsRecord<T extends Record<string, unknown>> = {
-  [P in keyof T as P extends string ? `$${P}` : never]: T[P];
-};
+// export type QueryParamsRecord<T extends Record<string, unknown>> = {
+//   [P in keyof T as P extends string ? `$${P}` : never]: T[P];
+// };
 
 export type WebVitalsBody = {
-  metricId?: string;
-  metricName?: string;
-  navigationType?: string;
-  rating?: string;
-  value?: number;
+  metricId: string;
+  metricName: string;
+  navigationType: string;
+  rating: string;
+  value: number;
 };

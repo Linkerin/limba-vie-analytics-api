@@ -2,8 +2,8 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 
-import type { AnalyticsBody, QueryParamsRecord, WebVitalsBody } from './types';
-import createDB from './db';
+import analytics from './routes/analytics';
+import webVitals from './routes/web-vitals';
 
 const ALLOWED_ORIGINS = ['https://limba.vercel.app', 'http://localhost:3000'];
 
@@ -28,35 +28,10 @@ app.get('/ping', c => {
   return c.text('Pong!');
 });
 
-app.post('/analytics', async c => {
-  const body = await c.req.json<AnalyticsBody>();
-
-  const params: QueryParamsRecord<AnalyticsBody> = Object.fromEntries(
-    Object.entries(body).map(([key, value]) => [`$${key}`, value])
-  );
-
-  const { db, queries } = createDB();
-  queries.createAnalyticsRecord.run(params);
-  db.close(false);
-
-  return c.text('OK');
-});
-
-app.post('/web-vitals', async c => {
-  const body = await c.req.json<WebVitalsBody>();
-
-  const params: QueryParamsRecord<WebVitalsBody> = Object.fromEntries(
-    Object.entries(body).map(([key, value]) => [`$${key}`, value])
-  );
-
-  const { db, queries } = createDB();
-  queries.createWebVitalsRecord.run(params);
-  db.close(false);
-
-  return c.text('OK');
-});
+app.route('/analytics', analytics);
+app.route('/web-vitals', webVitals);
 
 export default {
-  port: process.env.PORT ?? 5500,
+  port: process.env.PORT ?? 8000,
   fetch: app.fetch
 };

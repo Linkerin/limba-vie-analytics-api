@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Analytics {
+  id              Int      @id @default(autoincrement()) 
+  pathname        String   @db.VarChar(255)
+  os              String?
+  osVersion       String?  @map("os_version")
+  engine          String?
+  engineVersion   String?  @map("engine_version")
+  deviceType      String?  @map("device_type")
+  deviceModel     String?  @map("device_model")
+  deviceVendor    String?  @map("device_vendor")
+  browser         String?
+  browserVersion  String?  @map("browser_version")
+  country         String?
+  city            String?
+  ip              String?
+  userId          String?  @map("user_id")
+  bot             Boolean?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("analytics")
+}
+
+model WebVitals {
+  id             Int      @id @default(autoincrement())
+  metricId       String   @db.VarChar(255) @map("metric_id")
+  metricName     String   @map("metric_name")
+  navigationType String?  @map("navigation_type")
+  rating         String?
+  value          Float
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("web_vitals")
+}
