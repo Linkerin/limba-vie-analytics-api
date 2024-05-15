@@ -35,6 +35,7 @@ Receives `JSON` with the application visit information.
 | country        | `string`  | no       |
 | city           | `string`  | no       |
 | ip             | `string`  | no       |
+| referer        | `string`  | no       |
 | userId         | `string`  | no       |
 | bot            | `boolean` | no       |
 
@@ -56,6 +57,7 @@ POST /api/analytics
   "country": null,
   "city": null,
   "ip": null,
+  "referer": null,
   "userId": null,
   "bot": false,
 }
@@ -104,6 +106,11 @@ Receives `JSON` with web vitals metrics data.
 | navigationType | `string` | yes      |
 | rating         | `string` | yes      |
 | value          | `number` | yes      |
+| city           | `string` | no       |
+| country        | `string` | no       |
+| ip             | `string` | no       |
+| userAgent      | `string` | no       |
+| userId         | `string` | no       |
 
 **Example**:
 
@@ -115,6 +122,11 @@ POST /api/web-vitals
   "navigationType": "navigate",
   "rating": "good",
   "value": "999.2999999998137",
+  "city": null,
+  "country": "US",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+  "userId": null,
 }
 ```
 

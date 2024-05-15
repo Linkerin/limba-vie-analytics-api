@@ -5,10 +5,12 @@
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
-    "hono": "^4.3.5"
+    "hono": "^4.3.5",
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/ua-parser-js": "^0.7.39",
     "prisma": "^5.14.0"
   }
 }

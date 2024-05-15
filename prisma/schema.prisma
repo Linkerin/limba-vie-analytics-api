@@ -1,11 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -22,8 +14,8 @@ model Analytics {
   osVersion       String?  @map("os_version")
   engine          String?
   engineVersion   String?  @map("engine_version")
-  deviceType      String?  @map("device_type")
   deviceModel     String?  @map("device_model")
+  deviceType      String?  @map("device_type")
   deviceVendor    String?  @map("device_vendor")
   browser         String?
   browserVersion  String?  @map("browser_version")
@@ -48,6 +40,15 @@ model WebVitals {
   country        String?
   city           String?
   ip             String?
+  browser        String?
+  browserVersion String?  @map("browser_version")
+  engine         String?
+  engineVersion  String?  @map("engine_version")
+  deviceModel    String?  @map("device_model")
+  deviceType     String?  @map("device_type")
+  deviceVendor   String?  @map("device_vendor")
+  os             String?
+  osVersion      String?  @map("os_version")
   userAgent      String?  @map("user_agent")
   userId         String?  @map("user_id")
   createdAt      DateTime @default(now()) @map("created_at")
