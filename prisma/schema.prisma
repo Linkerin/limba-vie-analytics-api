@@ -44,6 +44,9 @@ model WebVitals {
   navigationType String?  @map("navigation_type")
   rating         String?
   value          Float
+  ip             String?
+  userAgent      String?  @map("user_agent")
+  userId         String?  @map("user_id")
   createdAt      DateTime @default(now()) @map("created_at")
 
   @@map("web_vitals")
