@@ -11,6 +11,8 @@ app.post('/', async c => {
     if (!body.pathname) {
       throw new TypeError("'pathname' value was not provided");
     }
+    console.log(body.referer);
+    delete body.referer;
 
     await prisma.analytics.create({ data: body });
 

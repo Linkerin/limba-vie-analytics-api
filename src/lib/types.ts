@@ -12,6 +12,7 @@ export type AnalyticsBody = {
   country?: string;
   city?: string;
   ip?: string;
+  referer?: string;
   userId?: string;
   bot?: boolean;
 };
@@ -29,4 +30,5 @@ export type WebVitalsBody = {
   ip?: string;
   userAgent?: string;
   userId?: string;
+  location?: string[];
 };
