@@ -27,8 +27,9 @@ export type WebVitalsBody = {
   navigationType: string;
   rating: string;
   value: number;
+  city?: string;
+  country?: string;
   ip?: string;
   userAgent?: string;
   userId?: string;
-  location?: string[];
 };

@@ -14,9 +14,6 @@ app.post('/', async c => {
       }
     }
 
-    console.log(body.location);
-    delete body.location;
-
     await prisma.webVitals.create({ data: body });
 
     return c.json({ success: true }, 201);

@@ -30,6 +30,7 @@ model Analytics {
   country         String?
   city            String?
   ip              String?
+  referer         String?
   userId          String?  @map("user_id")
   bot             Boolean?
   createdAt       DateTime @default(now()) @map("created_at")
@@ -44,6 +45,8 @@ model WebVitals {
   navigationType String?  @map("navigation_type")
   rating         String?
   value          Float
+  country        String?
+  city           String?
   ip             String?
   userAgent      String?  @map("user_agent")
   userId         String?  @map("user_id")
